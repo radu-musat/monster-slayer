@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/app.css">
+
+    <script src="js/vue.js" defer></script>
+    <script src="js/app.js" defer></script>
+    <title>Monster Slayer</title>
+
+</head>
+    <body>
+
+        <div id="app">
+
+            <div class="game">
+
+                <!-- entities -->
+                <div class="game__ui">
+                    <h1 class="card">The Monster Slayer</h1>
+                    <!-- Player -->
+                    <div class="game__entity game__entity--player card">
+                        <figure>
+                           <picture>
+                               <img src="icons/player.svg" alt="player avatar">
+                           </picture>
+                           <figcaption>Player</figcaption>
+                        </figure>
+                        <div class="game__lifebar">
+                            <h2>Life</h2>
+                            <div class="game__life">
+                                <div class="game__progress-bar" :style="{width: player.life + '%'}"></div>
+                                <span>{{ player.life }} %</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- actions -->
+                    <div class="game__actions card">
+                        <template v-if="!gameOver">
+                            <button @click="startRound('basic')" class="btn btn--stripe">Attack</button>
+                            <button @click="startRound('special')" class="btn btn--stripe">Special attack</button>
+                            <button @click="heal()" :disabled="this.player.healDisabled"  class="btn btn--stripe">Heal</button>
+                            <button @click="resetGame()" class="btn btn--stripe">Give Up</button>
+                        </template>
+                        <template v-else>
+                            <button @click="startGame()" class="btn btn--stripe btn--fill">Start game</button>
+                        </template>
+                    </div>
+
+                    <!-- Monster -->
+                    <div class="game__entity game__entity--monster card">
+                        <figure>
+                            <picture>
+                                <img src="icons/monster.svg" alt="monster avatar">
+                            </picture>
+                            <figcaption>Monster</figcaption>
+                        </figure>
+                        <div class="game__lifebar">
+                            <h2>Life</h2>
+                            <div class="game__life">
+                                <div class="game__progress-bar" :style="{width: monster.life + '%'}"></div>
+                                <span>{{ monster.life }} %</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="game__combat-records card">
+                        <p class="game__remaining-heals">remaining heals - {{ this.player.remainingHeals }}</p>
+                        <ul class="card">
+                            <li v-for="log in combatLog">{{log}}</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

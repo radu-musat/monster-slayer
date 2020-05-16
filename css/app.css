@@ -1,0 +1,70 @@
+@import "reset.css";
+@import "button.css";
+
+#app { align-items: center; background: url("../icons/background.png") center/cover no-repeat; display: flex; justify-content: center; min-height: 100%; padding: .5rem; }
+
+#app h1 { font-size: 1.5rem; margin-bottom: 1rem; text-align: center; flex-basis: 100%;}
+
+.card { background: rgba(255, 255, 255, .9); border: 2px solid #777; box-shadow: 0 3px 15px rgba(0,0,0,0.2); border-radius: 3px; margin-bottom: 1rem; padding: 1.25rem; }
+
+.game__ui { display: flex; flex-wrap: wrap; padding: 1rem; justify-content: space-between; margin: 0 auto; max-width: 767px; }
+
+.game__entity { flex-basis:  48%; }
+
+.game__entity figure,
+.game__entity picture,
+.game__entity img
+    { display: block; width: 100%; }
+
+.game__entity picture { margin-bottom: .75rem; }
+.game__entity figure  { margin-bottom: .5rem; }
+.game__entity figcaption { text-align: center; }
+
+.game__lifebar h2 { margin-bottom: .5rem; text-align: center; }
+.game__life { background-color: #d8d8d8; border: 1px solid #777; border-radius: 3px; height: 20px; width: 100%; position: relative; }
+.game__life span { display: block; left: 50%; position: absolute; top: 55%; transform: translate(-50%, -50%); text-align: center; width: 100% }
+.game__progress-bar { background-color: #84f118; border-radius: 3px; height: 100%; width: 100%; text-align: center; transition: width .25s ease-out; }
+
+.game__actions { display: flex; flex-basis: 100%; flex-wrap: wrap; justify-content: space-between; margin-bottom: 0;  order: 2; }
+.game__actions button { display: block; flex-basis: 45%; height: 4rem; margin-bottom: .5rem; padding: .5rem; width: 100%; text-align: center }
+.game__actions button:last-of-type { margin-bottom: 0; }
+.game__actions button:focus { outline: none;}
+.game__actions button[disabled] { display: none; }
+.game__actions button.btn--fill { flex-basis: 100%;}
+
+.game__combat-records { flex-basis: 100%; }
+.game__combat-records .card { height: 100px; font-size: .8rem;  margin-bottom: 0; overflow-y: auto; }
+.game__combat-records .card li { margin-bottom: .5rem; }
+.game__remaining-heals { margin-bottom: .3rem; text-align: center }
+
+@media only screen and (max-width: 1023px) {
+    .game__actions .card {
+        padding: .5rem .5rem 0;
+    }
+
+    .game__actions button {
+        height: 3rem; padding: .5rem; font-size: .75rem;
+    }
+}
+
+
+@media  only screen and (min-width: 1024px) {
+    #app h1 {
+        font-size: 2rem;
+    }
+
+    .game__ui {
+        max-width: 960px;
+    }
+
+    .game__entity { flex-basis: 33%; }
+    .game__actions { flex-basis: 33%; order: 0;  }
+
+    .game__actions { flex-direction: column; flex-wrap: nowrap; margin-bottom: 1rem; }
+
+    .game__actions button { padding: 16px 36px 22px; }
+
+    .game__combat-records { flex-basis: 100%; margin-bottom: 0; }
+    .game__combat-records .card { height: 200px; }
+    .game__combat-records .card li { font-size: 1rem; }
+}
