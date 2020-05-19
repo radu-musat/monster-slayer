@@ -16,7 +16,7 @@ new Vue({
     watch: {
         'monster.life': function () {
             if (this.monster.life <= 0) {
-                alert('You defeated the monster! Congratulation!');
+                alert('You defeated the monster! Congratulations!');
                 this.resetGame();
             }
         },
